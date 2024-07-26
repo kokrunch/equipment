@@ -113,7 +113,7 @@
                                                             <option value="2">อาจารย์/บุคลากร</option>
                                                             <option value="3">เจ้าหน้าที่</option>
                                                             <option value="4">ช่าง</option>
-                                                            <option value="5">เจ้าหน้าที่การเงิน</option>
+                                                            <option value="5">นักศึกษาฝึกงาน</option>
                                                         
                                                             
 

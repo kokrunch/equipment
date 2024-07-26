@@ -145,6 +145,8 @@ if (isset($_SESSION["empData"])) {
                             window.location.href = "./dashboard_mat.php";
                         } else if (role_id == 4) {
                             window.location.href = "./dashboard_repair.php";
+                        } else if (role_id == 5) {
+                            window.location.href = "./dashboard_mat";
                         }
 
                     })
