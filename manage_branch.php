@@ -1,5 +1,5 @@
 <?php include("component/checkSession.php"); ?>
-<?php include("component/roleAdmin.php  "); ?>
+<?php include("component/roleAdmin.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
