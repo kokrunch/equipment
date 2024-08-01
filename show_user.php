@@ -570,7 +570,7 @@
                         $("#addModal").modal('hide');
                         $("#addModal input").val('');
                         $("#addModal select").val(0);
-                        await getUser(1).then(() => writeTable("#table-user"));
+                        await getUser(0).then(() => writeTable("#table-user"));
                     })
 
 
