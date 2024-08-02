@@ -156,30 +156,66 @@
         }); //end ready function
 
         async function getEmpRoleFunc(reload) {
-            const url = "./controller/UserController.php?getEmpRole=1";
-            let RoleData;
-            await axios.get(url).then(function(res) {
-                RoleData = res.data;
-            }).catch((err) => console.log(err))
+    const url = "./controller/UserController.php?getEmpRole=1";
+    let RoleData;
 
-            if (reload == 1) {
-                $("#table-role").DataTable().destroy();
-            }
+    try {
+        const response = await axios.get(url);
+        RoleData = response.data;
+        console.log("RoleData:", RoleData); // แสดงข้อมูลที่ได้กลับมา
+    } catch (err) {
+        console.error("Error fetching RoleData:", err);
+        Swal.fire({
+            icon: 'error',
+            title: 'เกิดข้อผิดพลาด',
+            text: 'ไม่สามารถดึงข้อมูลสิทธิ์ผู้ใช้งานได้ กรุณาลองใหม่อีกครั้ง',
+        });
+        return;
+    }
 
-            const BodyTypeEmpRole = document.getElementById("emp_role");
-            BodyTypeEmpRole.innerHTML = "";
-            RoleData.forEach((element, index) => {
-                BodyTypeEmpRole.innerHTML += `
+    // ตรวจสอบว่า RoleData เป็นอาร์เรย์หรือไม่
+    if (!Array.isArray(RoleData)) {
+        console.error("RoleData is not an array:", RoleData);
+        Swal.fire({
+            icon: 'error',
+            title: 'เกิดข้อผิดพลาด',
+            text: 'ข้อมูลสิทธิ์ผู้ใช้งานที่ได้รับมาไม่ถูกต้อง กรุณาติดต่อผู้ดูแลระบบ',
+        });
+        return;
+    }
+
+    // ถ้า reload มีค่าเป็น 1 ให้ทำลาย DataTable เดิมก่อนสร้างใหม่
+    if (reload == 1) {
+        $("#table-role").DataTable().destroy();
+    }
+
+    const BodyTypeEmpRole = document.getElementById("emp_role");
+    BodyTypeEmpRole.innerHTML = "";
+
+    RoleData.forEach((element, index) => {
+        BodyTypeEmpRole.innerHTML += `
             <tr>
-                <td align="left">${index+1}</td>
+                <td align="left">${index + 1}</td>
                 <td align="left">${element.sub_role_name}</td>
                 <td>
-                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal")" onclick="editEmpRole(${element.sub_role_id})"><i class="bx bxs-edit"></i></button>
-                <button type="button" class="btn btn-outline-danger" onclick = "deleteEmpRole(${element.sub_role_id})"><i class="bx bxs-trash"></i></button></td>
+                    <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="editEmpRole(${element.sub_role_id})">
+                        <i class="bx bxs-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" onclick="deleteEmpRole(${element.sub_role_id})">
+                        <i class="bx bxs-trash"></i>
+                    </button>
+                </td>
             </tr>
-            `
-            });
-        }
+        `;
+    });
+
+    // หลังจากอัปเดตข้อมูลในตารางแล้ว ให้เรียกใช้ DataTable ใหม่
+    if (reload == 1) {
+        $('#table-role').DataTable();
+    }
+}
+
+
 
         async function insertEmpRole() {
             let role_name = document.getElementById("role_name").value;

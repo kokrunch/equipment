@@ -603,7 +603,7 @@
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         console.log('Response:', this.responseText); // ดูค่าตอบกลับจากเซิร์ฟเวอร์
-
+    
         var response = this.responseText;
 
         if (response == 1) {
@@ -837,3 +837,5 @@
         })
     }
 </script>
+
+
