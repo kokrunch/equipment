@@ -55,13 +55,13 @@ session_start();
                     echo '<a class="btn" href="dashboard_emp"><i class="bi bi-arrow-left-circle"></i> กลับหน้าหลัก</a>';
                 }
                 if ($_SESSION['empData']->role_id == 3 || $_SESSION['empData']->role_id == 24 || $_SESSION['empData']->role_id == 25 || $_SESSION['empData']->role_id == 26) {
-                    echo '<a class="btn" href="dashboard_repair"><i class="bi bi-arrow-left-circle"></i> กลับหน้าหลัก</a>';
+                    echo '<a class="btn" href="dashboard_repair.php"><i class="bi bi-arrow-left-circle"></i> กลับหน้าหลัก</a>';
                 }
                 if ($_SESSION['empData']->role_id == 4) {
-                    echo '<a class="btn" href="dashboard_mat"><i class="bi bi-arrow-left-circle"></i> กลับหน้าหลัก</a>';
+                    echo '<a class="btn" href="dashboard_mat.php"><i class="bi bi-arrow-left-circle"></i> กลับหน้าหลัก</a>';
                 }
                 if ($_SESSION['empData']->role_id == 5) {
-                    echo '<a class="btn" href="admin_dashboard"><i class="bi bi-arrow-left-circle"></i> กลับหน้าหลัก</a>';
+                    echo '<a class="btn" href="admin_dashboard.php"><i class="bi bi-arrow-left-circle"></i> กลับหน้าหลัก</a>';
                 }
 
                 ?>
