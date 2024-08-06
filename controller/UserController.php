@@ -1,13 +1,13 @@
 <?php
 session_start();
-echo 'in user controler';
+//echo 'in user controler';
 
 require_once('../models/personnerModel.php');
 require_once('../models/employeeModel.php');
 require_once('../utils/utils.php');
 
 if (isset($_GET['getUser'])) {
-    echo '<br>in get user';
+   // echo '<br>in get user';
     $emp_id = $_SESSION["empData"]->emp_id;
     $person = new PersonerModel();
     $result = $person->getAllPersonel($emp_id);
@@ -27,7 +27,7 @@ if (isset($_GET['getbranch'])) {
 
 
 if (isset($_POST['addUser'])) {
-    echo 'in add useer';
+    //echo 'in add useer';
     
     if (isset($_FILES['file']['name'])) {
 
@@ -116,7 +116,7 @@ if (isset($_POST['addUser'])) {
         }
     }
 }else{
-    echo 'add user else';
+   // echo 'add user else';
 }
 
 

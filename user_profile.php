@@ -13,21 +13,18 @@
     <?php include("component/navbar.php"); ?>
 
     <?php
-    if ($_SESSION['empData']->role_id == 1 || $_SESSION['empData']->role_id == 2) {
-        include("component/sidebarEmp.php");
-    }
-    if ($_SESSION['empData']->role_id == 3) {
-        include("component/sidebarRepair.php");
-    }
-    if ($_SESSION['empData']->role_id == 4) {
-        include("component/sidebarMat.php");
-    }
-
-    if ($_SESSION['empData']->role_id == 5) {
+    if ($_SESSION['empData']->role_id == 1) {
         include("component/sidebar.php");
     }
+    if ($_SESSION['empData']->role_id == 2) 
+        include("component/sidebarEmp.php");
 
-
+    if ($_SESSION['empData']->role_id == 3) {
+        include("component/sidebarMat.php");
+    }
+    if ($_SESSION['empData']->role_id == 4) {
+        include("component/sidebarRepair.php");
+    }
 
     ?>
 

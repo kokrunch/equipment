@@ -265,7 +265,7 @@
 
         var userData;
         await axios.get(url).then(function(response) {
-            // console.log(response.data)
+            console.log(response.data)
             userData = response.data;
             bodyUser.innerHTML = response;
         }).catch((err) => console.log(err));
@@ -345,7 +345,7 @@
 
         let branch = document.getElementById("role_type_id").value;
         //onsole.log("branch >> ", branch);
-        alert(branch);
+        //alert(branch);
         if (branch != "") {
             document.getElementById("branch_check_i").style.display = "block";
 
@@ -375,11 +375,13 @@
         let typeRoleData;
         await axios.get(url).then(function(res) {
             typeRoleData = res.data;
+            //alert(res.data);
         }).catch((err) => console.log(err))
 
         const BodyTypeRole = document.getElementById("role_type_id");
+        //alert(typeRoleData);
         typeRoleData.forEach((val, index) => {
-            BodyTypeRole.innerHTML += `<option value = "${val.role_id}">${val.role_name}</option>`
+            BodyTypeRole.innerHTML += '<option value = "${val.role_id}">${val.role_name}</option>'
         });
 
         const BodyTypeRoleEdit = document.getElementById("role_type_id_edit");
@@ -556,7 +558,7 @@
             if (this.readyState == 4 && this.status == 200) {
 
                 var response = this.responseText;
-                alert(response);
+                //alert(response);
                 // console.log(this.responseText)
 
                 if (response == 1) {
@@ -760,6 +762,7 @@
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
         }).then((res) => {
+            alert('res = '+res.data);
             // console.log(res.data)
             if (res.data == 1) {
                 Swal.fire({

@@ -14,7 +14,7 @@ class PersonerModel
         $sql = "select * from tb_employee 
         LEFT JOIN tb_role ON tb_employee.sub_role_id = tb_role.role_id
         LEFT JOIN tb_branch ON tb_employee.branch_id = tb_branch.branch_id WHERE tb_employee.emp_id != $emp_id";
-        echo $sql;
+        //echo $sql;
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -86,7 +86,7 @@ class PersonerModel
 
     public function editUser($data_array)
     {
-        $sql_up = "update tb_employee SET emp_firstname = :fname_up,emp_lastname = :lname_up,emp_email = :email_up,emp_tel = :tel_up,role_id = :role_id_up,branch_id = :branch_id_up
+        $sql_up = "update tb_employee SET emp_firstname = :fname_up,emp_lastname = :lname_up,emp_email = :email_up,emp_tel = :tel_up,sub_role_id = :role_id_up,branch_id = :branch_id_up
          WHERE emp_id = :id_up";
 
         $stmt = $this->conn->prepare($sql_up);
