@@ -9,6 +9,7 @@ require_once('../utils/utils.php');
 require_once('../models/EquipmentBudgetYearModel.php');
 require_once('../models/StockModel.php');
 
+// not error
 if (isset($_GET['getEqu'])) {
     $euipment = new EquipmentModel();
     $budgetYearModel = new BudgetYearModel();
